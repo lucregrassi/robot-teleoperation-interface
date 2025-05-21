@@ -178,7 +178,7 @@ if st.button("Delete"):
 st.subheader("Perform action")
 
 # Create a dropdown menu for action selection
-actions = ["Hug", "Greet"]
+actions = ["Greet", "Handshake", "Hug"]
 selected_action = st.selectbox("Choose an action", actions)
 
 if st.button("Send"):
@@ -188,3 +188,6 @@ if st.button("Send"):
     elif selected_action == "Greet":
         send_command("GREET", st.session_state.robot_ip)
         st.success("Greet command sent!")
+    elif selected_action == "Handshake":
+        send_command("HANDSHAKE", st.session_state.robot_ip)
+        st.success("Handshake command sent!")

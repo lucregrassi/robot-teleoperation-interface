@@ -91,18 +91,6 @@ with col5:
     if st.button("➡️"):
         send_command('ROTATE_RIGHT', st.session_state.robot_ip)
 
-# --- Section to control robot's volume ---
-st.subheader("Volume Control")
-volume_col1, volume_col2 = st.columns([1, 1])
-
-with volume_col1:
-    if st.button("🔊 Volume up"):
-        send_command("VOLUME_UP", st.session_state.robot_ip)
-
-with volume_col2:
-    if st.button("🔉 Volume down"):
-        send_command("VOLUME_DOWN", st.session_state.robot_ip)
-
 # --- Section to send a sentence ---
 st.subheader("Make the robot talk")
 
@@ -129,6 +117,37 @@ if submit_sentence:
     # If a sentence exists (either predefined or manual), send it
     if sentence:
         send_command(sentence, st.session_state.robot_ip)
+
+# --- Section to control robot's animations ---
+st.subheader("Perform action")
+
+# Create a dropdown menu for action selection
+actions = ["Greet", "Handshake", "Hug"]
+selected_action = st.selectbox("Choose an action", actions)
+
+if st.button("Send"):
+    if selected_action == "Hug":
+        send_command("HUG", st.session_state.robot_ip)
+        st.success("Hug command sent!")
+    elif selected_action == "Greet":
+        send_command("GREET", st.session_state.robot_ip)
+        st.success("Greet command sent!")
+    elif selected_action == "Handshake":
+        send_command("HANDSHAKE", st.session_state.robot_ip)
+        st.success("Handshake command sent!")
+
+        # --- Section to control robot's volume ---
+        st.subheader("Volume Control")
+        volume_col1, volume_col2 = st.columns([1, 1])
+
+        with volume_col1:
+            if st.button("🔊 Volume up"):
+                send_command("VOLUME_UP", st.session_state.robot_ip)
+
+        with volume_col2:
+            if st.button("🔉 Volume down"):
+                send_command("VOLUME_DOWN", st.session_state.robot_ip)
+
 
 # Display the table of predefined sentences and their corresponding numbers
 st.subheader("Predefined Sentences List")
@@ -173,21 +192,3 @@ if st.button("Delete"):
         save_sentences(st.session_state.sentences, file_path)
         st.success("Sentence deleted successfully!")
         st.rerun()
-
-# --- Section to control robot's animations ---
-st.subheader("Perform action")
-
-# Create a dropdown menu for action selection
-actions = ["Greet", "Handshake", "Hug"]
-selected_action = st.selectbox("Choose an action", actions)
-
-if st.button("Send"):
-    if selected_action == "Hug":
-        send_command("HUG", st.session_state.robot_ip)
-        st.success("Hug command sent!")
-    elif selected_action == "Greet":
-        send_command("GREET", st.session_state.robot_ip)
-        st.success("Greet command sent!")
-    elif selected_action == "Handshake":
-        send_command("HANDSHAKE", st.session_state.robot_ip)
-        st.success("Handshake command sent!")

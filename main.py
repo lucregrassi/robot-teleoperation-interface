@@ -1,9 +1,9 @@
-import streamlit as st
 import socket
+import streamlit as st
 import pandas as pd
 
 # Load sentences from the "sentences.txt" file
-file_path = "romecup2026.txt"
+file_path = "sentences.txt"
 
 # Create a UDP socket to communicate with the robot
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

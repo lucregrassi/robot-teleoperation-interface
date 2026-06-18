@@ -92,5 +92,5 @@ For any questions, feel free to reach out:
 
 GitHub: [lucregrassi](https://github.com/lucregrassi)
 
-Email: lucrezia.grassi@edu.unige.it
+Email: lucrezia.grassi@unige.it
    
